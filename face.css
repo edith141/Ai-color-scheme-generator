@@ -23,7 +23,6 @@ input[type="file"] {
   display: flex;
   /* align-items: center; */
   justify-content: center;
-  align-content: space-between;
   position: relative;
   width: 100%;
   height: 100%;
@@ -78,11 +77,15 @@ input[type="file"] {
 }
 
 #work_box{
+  /* display: flex; */
     margin-left: 10px;
     margin-right: 10px;
     padding-top: 5px;
     margin-bottom: 10px;
     align-content: center;
+    min-width: 70%;
+    /* justify-content: center; */
+    /* height: 100%; */
 }
 
 #upload {
@@ -93,19 +96,6 @@ input[type="file"] {
     margin: auto;
 }
 
-#colors div {
-    border: black solid 1px;
-    margin: 0.25em;
-    padding: 0.5em;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-}
-
-span {
-    display: inline-block;
-    /* font-size: 1.3em; */
-}
 .bg-image {
     background-position: center;
     background-repeat: no-repeat;
@@ -123,6 +113,11 @@ span {
    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
     
     border-radius: 10px;
+    position: absolute;
+    bottom: 25px;
+    left: calc(50% - 42.5px);
+    
+
    }
   
   .btn:hover {
@@ -135,3 +130,96 @@ span {
     background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
     cursor: pointer;
   }
+
+  .color-list {
+  display: flex;
+  /* 
+    On small displays we want each .color stacked.
+    Flexbox let's us determine stacking direction via
+    flex-direction: column;
+  */
+  flex-direction: column;
+  height: 30vh;
+}
+
+.color {
+  /*
+    Each .color is also a flex item. We do this so that we have reasonable
+    distribution of space between elements. We use flex-direction so that
+    flexbox knows which way to position each element (in this case, vertical).
+  */
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  
+  /*
+    .color can grow but not shrink (we want space for first three elements).
+    10em is enough space to see name, hsl, and hex values. 
+    Try shrinking vertically on a small display.
+  */
+  flex: 1 0 2em;  
+  box-shadow: 0 0 30px #424242;
+  
+  /* Handles any clipping/overflow issues on transition */
+  overflow: hidden;
+  padding: 1em;
+  color: white;
+  transition: flex-basis 500ms ease-in-out;
+}
+
+.color:hover {
+  /*
+    Change the flex-basis so that we know what
+    size to transition to on hover. Arbitrary,
+    based on our design/content.
+  */
+  flex-basis: 10em;
+}
+
+.color:hover .details {
+  opacity: 1;
+}
+
+.name {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.details {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+.details li {
+  font-size: 1em;
+  line-height: 2em;
+}
+
+@media (min-width: 600px) {
+  .color-list {
+    /*
+      Change the direction so that each .color
+      aligns horizontally
+    */
+    flex-direction: row;
+  }
+  
+  .color {
+    /*
+      No scrollbars on mobile
+    */
+    flex-shrink: 1;
+  }
+}
+
+@media (max-width: 600px) {
+
+  #work_box{
+    overflow: scroll;
+}
+
+/* Fonts, OK at the end for this demo! */
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);

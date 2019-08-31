@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +9,33 @@
     <link rel="stylesheet" href="face.css">
     <title>Schemer</title>
 </head>
+
 <body class="">
     <div class="bg-image">
-    <div class="gradient-border boxi-contain"> 
-        <div id="work_box">
-            <h1>Schemerr</h1>
-            
-            <div id="colors"></div>  
-            <label for="upload">
-            <a class="btn btn-1">Upload</a>
-            </label>
-            <input type="file" id="upload" onchange="processImg()" />
-           </div>
+        <div class="gradient-border boxi-contain">
+
+            <div id="work_box">
+                <h1>Schemerr</h1>
+
+
+                <div class="color-list">
+                    <p>Hey there! Please upload an image to see corrosponding color schemes!</p>
+                </div>
+
+
+                <input type="file" id="upload" onchange="processImg()" />
+                <label for="upload">
+                    <a class="btn btn-1">Upload</a>
+                </label>
+            </div>
+
+        </div>
     </div>
-</div>
     <!-- Libs-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
     <script src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
     <script src="brain.js"></script>
 </body>
+
 </html>
