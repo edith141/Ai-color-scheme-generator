@@ -64,7 +64,7 @@
 
         reader.onload = function () {
             $('.bg-image').css('background-image', 'url("' + reader.result + '")');
-            $('#colors').html('<h2>Processing...</h2>');
+            $('.color-list').html('<h2>Processing...</h2>');
 
             getColors(reader.result.substr(reader.result.search('base64,') + 7));
         };
